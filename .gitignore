@@ -1,0 +1,35 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Diretórios temporários
+# tmp/
+temp/
+*.tmp
+*.temp
+
+# Arquivos de cache e compilação
+.DS_Store
+*.swp
+.vscode/
+
+# Ambiente e Configurações
+# .env
+.env.local
+.env.*.local
+
+# Arquivos de saída (Build)
+dist/
+build/
+
+# Cobertura de teste
+coverage/
+
+# Dados e uploads temporários
+uploads/

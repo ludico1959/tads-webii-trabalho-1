@@ -1,0 +1,20 @@
+{
+  "name": "trabalho-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "start:dev": "node --watch src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "11.2.1",
+    "dotenv": "16.4.5",
+    "ejs": "3.1.10",
+    "express": "4.19.2",
+    "method-override": "3.0.0"
+  }
+}

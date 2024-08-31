@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalho 1</title>
+    <!-- Incluindo Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Incluindo Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Nome do aluno -->
+        <div class="d-flex justify-content mb-3">
+            <h4>Lucas Dias Coelho</h4>
+        </div>
+
+        <!-- Botão de adição de usuário -->
+        <div class="d-flex justify-content mb-3">
+            <a id="add-user" class="btn btn-primary mr-2" href="/add">
+              <i class="fas fa-user-plus"></i> Adicionar Usuário
+            </a>
+        </div>
+
+        <!-- Tabela de Usuários -->
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Tipo</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>CPF</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(user => { %>
+                        <tr>
+                            <td class="text-center"><%= user.id %></td>
+                            <td><%= user.type %></td>
+                            <td><%= user.name %></td>
+                            <td><%= user.primary_email %></td>
+                            <td><%= user.primary_phone %></td>
+                            <td><%= user.cpf %></td>
+                            <td class="text-center">
+                                <a class="btn btn-warning btn-sm" href="/edit/<%= user.id %>">
+                                  <i class="fas fa-edit"></i>
+                                </a>
+                                <a 
+                                  class="btn btn-danger btn-sm" href="/remove/<%= user.id %>">
+                                  <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Botão de exportar CSV -->
+        <div class="d-flex justify-content mb-3">
+            <a id="export-css" class="btn btn-success" href="/export/csv"><i class="fas fa-file-export"></i> Exportar CSS</a>
+        </div>
+    </div>
+
+    <!-- Incluindo jQuery e Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

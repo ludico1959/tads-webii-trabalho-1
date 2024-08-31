@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Usuário</title>
+    <!-- Incluindo Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Incluindo Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Adicionar Novo Usuário</h2>
+        <form id="user-form" action="/create" method="post">
+            <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" class="form-control" id="name" name="name" required maxlength="100">
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF:</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" required maxlength="14">
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="is-admin" name="is-admin" value="1">
+                <label for="is-admin">Administrador</label>
+            </div>
+            <div class="form-group">
+                <label for="emails">Emails (um por linha e o do topo será o principal):</label>
+                <textarea class="form-control" id="emails" name="emails" rows="5" placeholder="Digite um e-mail por linha" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="phones">Telefones (um por linha e o do topo será o principal):</label>
+                <textarea class="form-control" id="phones" name="phones" rows="5" placeholder="Digite um telefone por linha" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="submitForm()">Adicionar Usuário</button>
+        </form>
+    </div>
+
+    <!-- Incluindo jQuery e Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script>
+        // Função para formatar o CPF
+        function formatCPF(cpf) {
+            cpf = cpf.replace(/\D/g, '');
+            cpf = cpf.substring(0, 11);
+            cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+            cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+            cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+
+            return cpf;
+        }
+
+        document.getElementById('cpf').addEventListener('input', function (e) {
+            e.target.value = formatCPF(e.target.value);
+        });
+    </script>
+</body>
+</html>
